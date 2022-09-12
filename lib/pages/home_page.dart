@@ -40,9 +40,14 @@ class _HomePage extends State<HomePage>{
           children: [
             Column(
               children: [
-                createScrollView(text: 'Populares na Netflix'),
-                createScrollView(text: 'Em alta'),
-                createScrollView(text: 'Assista de novo'),
+                writeTitle(text: 'Populares na Netflix'),
+                createScrollView(),
+
+                writeTitle(text: 'Em alta'),
+                createScrollView(),
+
+                writeTitle(text: 'Assista de novo'),
+                createScrollView(),
               ],
             ),
           ],
@@ -68,28 +73,41 @@ class _HomePage extends State<HomePage>{
     );
   }
 
-  createScrollView({
-   required String text,
+  writeTitle({
+    required String text,
   }){
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Text(
+          text,
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 24,
+          ),
+        ),
+      ],
+    );
+  }
+
+  createScrollView() {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          createRow(text: text),
+          createColumn(),
         ],
       ),
     );
   }
 
-  createRow({
-    required String text,
-  }){
+  createColumn(){
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(text, style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold)),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
