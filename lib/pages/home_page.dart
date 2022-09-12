@@ -39,15 +39,27 @@ class _HomePage extends State<HomePage>{
         child: ListView(
           children: [
             Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
+
+                const Divider(),
                 writeTitle(text: 'Populares na Netflix'),
+                const Divider(),
                 createScrollView(),
+                const Divider(),
 
+                const Divider(),
                 writeTitle(text: 'Em alta'),
+                const Divider(),
                 createScrollView(),
+                const Divider(),
 
+                const Divider(),
                 writeTitle(text: 'Assista de novo'),
+                const Divider(),
                 createScrollView(),
+                const Divider(),
+
               ],
             ),
           ],
@@ -112,9 +124,13 @@ class _HomePage extends State<HomePage>{
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Image.network('https://static.stealthelook.com.br/wp-content/uploads/2021/11/o-ranking-das-series-mais-assistidas-da-netflix-e-porque-voce-deveria-assisti-las-sweet-tooth-20211108204454.jpg', height: 160),
+            const SizedBox(width: 16),
             Image.network('https://static.stealthelook.com.br/wp-content/uploads/2021/11/o-ranking-das-series-mais-assistidas-da-netflix-e-porque-voce-deveria-assisti-las-sweet-tooth-20211108204454.jpg', height: 160),
+            const SizedBox(width: 16),
             Image.network('https://static.stealthelook.com.br/wp-content/uploads/2021/11/o-ranking-das-series-mais-assistidas-da-netflix-e-porque-voce-deveria-assisti-las-sweet-tooth-20211108204454.jpg', height: 160),
+            const SizedBox(width: 16),
             Image.network('https://static.stealthelook.com.br/wp-content/uploads/2021/11/o-ranking-das-series-mais-assistidas-da-netflix-e-porque-voce-deveria-assisti-las-sweet-tooth-20211108204454.jpg', height: 160),
+            const SizedBox(width: 16),
             Image.network('https://static.stealthelook.com.br/wp-content/uploads/2021/11/o-ranking-das-series-mais-assistidas-da-netflix-e-porque-voce-deveria-assisti-las-sweet-tooth-20211108204454.jpg', height: 160),
           ],
         ),
