@@ -35,7 +35,22 @@ class _HomePage extends State<HomePage>{
       ),
       body: ListView(
         children: [
-
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              writeText(text: 'Populares na Netflix'),
+              Scrollbar(
+                thumbVisibility: true,
+                trackVisibility: true,
+                child: ListView.builder(
+                  itemCount: 5,
+                  itemBuilder: (context, index) {
+                    return makeSerie();
+                  },
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );
@@ -55,6 +70,25 @@ class _HomePage extends State<HomePage>{
           fontWeight: FontWeight.bold,
         ),
       ),
+    );
+  }
+
+  writeText({
+    required String text,
+  }){
+    return Text(
+      text,
+      style: const TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.bold,
+      ),
+    );
+  }
+
+  makeSerie(){
+    return Image.network(
+        'https://static.stealthelook.com.br/wp-content/uploads/2021/11/o-ranking-das-series-mais-assistidas-da-netflix-e-porque-voce-deveria-assisti-las-sweet-tooth-20211108204454.jpg',
+        height: 80,
     );
   }
 
