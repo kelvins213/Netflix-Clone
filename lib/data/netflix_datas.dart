@@ -8,6 +8,13 @@ import 'package:netflix_clone/pages/news_page.dart';
 class NetflixDatabase{
 
   static NetflixLogin login = NetflixLogin(title: "Sign In", logo: "https://gkpb.com.br/wp-content/uploads/2016/06/novo-icone-identidade-visual-logo-netflix-blog-gkpb.jpg");
+
+  static NetflixSeries serie1 = NetflixSeries(serie: "https://img1.ak.crunchyroll.com/i/spire2/f31efd8a9acebc82b2ebbfba0cc2cb2c1646147551_main.jpg", name: 'Series', first_icon: Icons.info, second_icon: Icons.more_vert);
+  static NetflixSeries serie2 = NetflixSeries(serie: "https://upload.wikimedia.org/wikipedia/pt/e/e9/Breaking_bad_2_temporada_poster.jpg", name: 'Series', first_icon: Icons.info, second_icon: Icons.more_vert);
+  static NetflixSeries serie3 = NetflixSeries(serie: "https://br.web.img2.acsta.net/pictures/21/09/05/23/33/4941501.jpg", name: 'Series', first_icon: Icons.info, second_icon: Icons.more_vert);
+  static NetflixSeries serie4 = NetflixSeries(serie: "https://img1.ak.crunchyroll.com/i/spire3/aa90db8dccdb4b978881fe41629bb5f71654083597_main.jpg", name: 'Series', first_icon: Icons.info, second_icon: Icons.more_vert);
+  static NetflixSeries serie5 = NetflixSeries(serie: "https://www.infoanime.com.br/wa_1_p/pa_12i2wgk42q/big_yugiohduel.jpg", name: 'Series', first_icon: Icons.info, second_icon: Icons.more_vert);
+
   static String link1 = "https://sm.ign.com/ign_br/screenshot/default/sandman-poster-1_fv1d.jpg";
   static String link2 = "https://i.pinimg.com/564x/5a/ff/9f/5aff9f15e4a54ce2df3e26659ee7d364.jpg";
   static String link3 = "https://static.wikia.nocookie.net/blacklist/images/9/99/The_Blacklist_Season_2.jpg/revision/latest?cb=20170505191018";
@@ -26,6 +33,14 @@ class NetflixDatabase{
   static String link16 = "https://m.media-amazon.com/images/M/MV5BMmRhZDI4ODItYTAzMC00NWQ1LTk1MTctZWYyMDY3ZTU3NWFiXkEyXkFqcGdeQXVyMzgxODM4NjM@._V1_.jpg";
   static String link17 = "https://img1.ak.crunchyroll.com/i/spire4/74dc98daf4362012ff758c7f4a13b2381649904825_main.jpg";
   static String link18 = "https://images-na.ssl-images-amazon.com/images/I/81ltLN+JacL.jpg";
+
+  static List<NetflixSeries> series = [
+    serie1,
+    serie2,
+    serie3,
+    serie4,
+    serie5,
+  ];
 
   static List<String>tradicionalSeries = [
     link1,

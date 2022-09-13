@@ -10,3 +10,18 @@ class NetflixLogin{
     required this.logo,
   });
 }
+
+class NetflixSeries{
+  final String serie;
+  final String name;
+  final IconData first_icon;
+  final IconData second_icon;
+
+  NetflixSeries({
+    required this.serie,
+    required this.name,
+    required this.first_icon,
+    required this.second_icon,
+  });
+
+}

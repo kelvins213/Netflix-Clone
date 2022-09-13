@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_clone/data/netflix_datas.dart';
+import 'package:netflix_clone/widgets/user_widget.dart';
 
 class HomePage extends StatefulWidget{
   const HomePage({Key? key}) : super(key: key);
@@ -26,9 +27,9 @@ class _HomePage extends State<HomePage>{
                 logo,
                 height: 40,
               ),
-              creatElevatedButton(text: 'Séries'),
-              creatElevatedButton(text: 'Filmes'),
-              creatElevatedButton(text: 'Minha lista'),
+              creatElevatedButton(text: 'Séries', lista: NetflixDatabase.series),
+              creatElevatedButton(text: 'Filmes', lista: NetflixDatabase.series),
+              creatElevatedButton(text: 'Minha lista', lista: NetflixDatabase.series),
             ],
           ),
         ),
@@ -67,12 +68,13 @@ class _HomePage extends State<HomePage>{
   }
   creatElevatedButton({
     required String text,
+    required List lista,
   }){
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.black,
       ),
-      onPressed: onPressed,
+      onPressed: () => onPressed(lista),
       child: Text(
         text,
         style: TextStyle(
@@ -136,7 +138,16 @@ class _HomePage extends State<HomePage>{
     );
   }
 
-  onPressed(){}
+  onPressed(List lista){
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) {
+           return UserPage(lista: lista);
+          }
+      ),
+    );
+  }
 }
 
 /*
