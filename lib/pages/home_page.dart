@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_clone/data/netflix_datas.dart';
-import 'package:netflix_clone/domain/netflix_atributes.dart';
 
 class HomePage extends StatefulWidget{
   const HomePage({Key? key}) : super(key: key);
@@ -45,21 +44,20 @@ class _HomePage extends State<HomePage>{
                 const Divider(),
                 writeTitle(text: 'Populares na Netflix'),
                 const Divider(),
-                createScrollView(),
+                createScrollView(list: NetflixDatabase.tradicionalSeries),
                 const Divider(),
 
                 const Divider(),
                 writeTitle(text: 'Em alta'),
                 const Divider(),
-                createScrollView(),
+                createScrollView(list: NetflixDatabase.onTopSeries),
                 const Divider(),
 
                 const Divider(),
                 writeTitle(text: 'Assista de novo'),
                 const Divider(),
-                createScrollView(),
+                createScrollView(list: NetflixDatabase.watchAgainSeries),
                 const Divider(),
-
               ],
             ),
           ],
@@ -103,38 +101,39 @@ class _HomePage extends State<HomePage>{
     );
   }
 
-  createScrollView() {
+  createScrollView({
+    required List list,
+  }){
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          createColumn(),
+          createColumn(seriesList: list),
         ],
       ),
     );
   }
 
-  createColumn(){
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+  createColumn({
+    required List seriesList,
+  }){
+    return ListView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      itemCount: seriesList.length,
+      itemBuilder: (context, index){
+        return Column(
           children: [
-            Image.network('https://static.stealthelook.com.br/wp-content/uploads/2021/11/o-ranking-das-series-mais-assistidas-da-netflix-e-porque-voce-deveria-assisti-las-sweet-tooth-20211108204454.jpg', height: 160),
-            const SizedBox(width: 16),
-            Image.network('https://static.stealthelook.com.br/wp-content/uploads/2021/11/o-ranking-das-series-mais-assistidas-da-netflix-e-porque-voce-deveria-assisti-las-sweet-tooth-20211108204454.jpg', height: 160),
-            const SizedBox(width: 16),
-            Image.network('https://static.stealthelook.com.br/wp-content/uploads/2021/11/o-ranking-das-series-mais-assistidas-da-netflix-e-porque-voce-deveria-assisti-las-sweet-tooth-20211108204454.jpg', height: 160),
-            const SizedBox(width: 16),
-            Image.network('https://static.stealthelook.com.br/wp-content/uploads/2021/11/o-ranking-das-series-mais-assistidas-da-netflix-e-porque-voce-deveria-assisti-las-sweet-tooth-20211108204454.jpg', height: 160),
-            const SizedBox(width: 16),
-            Image.network('https://static.stealthelook.com.br/wp-content/uploads/2021/11/o-ranking-das-series-mais-assistidas-da-netflix-e-porque-voce-deveria-assisti-las-sweet-tooth-20211108204454.jpg', height: 160),
+            Row(
+              children: [
+                Image.network(seriesList[index]),
+                const SizedBox(width: 10),
+              ],
+            ),
           ],
-        ),
-      ],
+        );
+      },
     );
   }
   onPressed(){}
