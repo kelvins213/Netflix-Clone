@@ -16,7 +16,6 @@ class _GamePage extends State<GamePage>{
       body: Column(
         children: [
           const Text("oi"),
-          BottonNavegationApp(),
         ],
       ),
     );

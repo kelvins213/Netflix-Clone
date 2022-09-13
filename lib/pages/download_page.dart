@@ -16,7 +16,6 @@ class _DownloadPage extends State<DownloadPage>{
       body: Column(
         children: [
           const Text("oi"),
-          BottonNavegationApp(),
         ],
       ),
     );

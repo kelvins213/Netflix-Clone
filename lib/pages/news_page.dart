@@ -16,7 +16,6 @@ class _NewsPage extends State<NewsPage>{
       body: Column(
         children: [
           const Text("oi"),
-          BottonNavegationApp(),
         ],
       ),
     );
