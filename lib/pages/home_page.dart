@@ -118,6 +118,30 @@ class _HomePage extends State<HomePage>{
   createColumn({
     required List seriesList,
   }){
+    return Row(
+      children: [
+        Image.network(seriesList[0], height: 160),
+        const SizedBox(width: 16),
+        Image.network(seriesList[1], height: 160),
+        const SizedBox(width: 16),
+        Image.network(seriesList[2], height: 160),
+        const SizedBox(width: 16),
+        Image.network(seriesList[3], height: 160),
+        const SizedBox(width: 16),
+        Image.network(seriesList[4], height: 160),
+        const SizedBox(width: 16),
+        Image.network(seriesList[5], height: 160),
+        const SizedBox(width: 16),
+      ],
+    );
+  }
+  onPressed(){}
+}
+
+/*
+createColumn({
+    required List seriesList,
+  }){
     return ListView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
@@ -136,5 +160,4 @@ class _HomePage extends State<HomePage>{
       },
     );
   }
-  onPressed(){}
-}
+*/

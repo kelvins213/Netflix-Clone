@@ -46,12 +46,12 @@ class NetflixDatabase{
   ];
 
   static List<String> watchAgainSeries = [
-    link13,
     link14,
     link15,
     link16,
     link17,
     link18,
+    link13,
   ];
 
   static List pageList = const [
