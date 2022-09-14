@@ -1,4 +1,5 @@
 import  'package:flutter/material.dart';
+import 'package:netflix_clone/domain/netflix_atributes.dart';
 
 class UserPage extends StatefulWidget{
   final List lista;
@@ -81,6 +82,40 @@ class _UserPage extends State<UserPage>{
                         createColumnWithIcon(icon: Icons.info, color: Colors.white, text: 'Info', size: 12),
                       ],
                     ),
+                    const SizedBox(height: 16),
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      child: Expanded(
+                        child: Row(
+                          children: [
+                            createText(text: "Continuar assistindo", size: 24, color: Colors.white),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          const SizedBox(height: 12),
+                          Row(
+                            children: [
+                              createSerieWithIcons(firstIcon: Icons.info, secondIcon: Icons.more_vert, color: Colors.white, size: 160, serie: widget.lista[0]),
+                              const SizedBox(width: 16),
+                              createSerieWithIcons(firstIcon: Icons.info, secondIcon: Icons.more_vert, color: Colors.white, size: 160, serie: widget.lista[1]),
+                              const SizedBox(width: 16),
+                              createSerieWithIcons(firstIcon: Icons.info, secondIcon: Icons.more_vert, color: Colors.white, size: 160, serie: widget.lista[2]),
+                              const SizedBox(width: 16),
+                              createSerieWithIcons(firstIcon: Icons.info, secondIcon: Icons.more_vert, color: Colors.white, size: 160, serie: widget.lista[3]),
+                              const SizedBox(width: 16),
+                              createSerieWithIcons(firstIcon: Icons.info, secondIcon: Icons.more_vert, color: Colors.white, size: 160, serie: widget.lista[4]),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -126,6 +161,31 @@ class _UserPage extends State<UserPage>{
       children: [
         createIcon(icon: icon, color: color),
         createText(text: text, size: size, color: color),
+      ],
+    );
+  }
+
+  createSerieWithIcons({
+    required IconData firstIcon,
+    required IconData secondIcon,
+    required Color color,
+    required double size,
+    required NetflixSeries serie,
+  }){
+    return Column(
+      children: [
+        Image.network(serie.serie, height: 160),
+        Container(
+          width: 114,
+          color: Color(0xFF1C1C1C).withOpacity(0.5),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                createIcon(icon: Icons.info, color: Colors.white),
+                createIcon(icon: Icons.more_vert, color: Colors.white),
+              ],
+            ),
+        ),
       ],
     );
   }
