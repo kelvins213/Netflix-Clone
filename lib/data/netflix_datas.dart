@@ -91,7 +91,7 @@ class NetflixDatabase{
   ];
 
   static Future <List<NetflixNews>> getNews() async{
-    await Future.delayed(const Duration(seconds: 5));
+    await Future.delayed(const Duration(seconds: 1));
     return  news;
   }
 

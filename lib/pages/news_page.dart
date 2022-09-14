@@ -15,41 +15,80 @@ class _NewsPage extends State<NewsPage>{
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
+        backgroundColor: Colors.black,
         centerTitle: true,
         title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                createText(text: "Novidades", size: 24, typeFont: FontWeight.normal),
+              ],
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                createIcon(icon: Icons.notification_add, size: 24),
+                const SizedBox(width: 12),
+                createIcon(icon: Icons.person, size: 24),
+              ],
+            ),
           ],
         ),
       ),
-      body: ListView.builder(
-        itemCount: NetflixDatabase.news.length,
-        itemBuilder: (context, index){
-          return Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      createText(text: "SET", size: 18, typeFont: FontWeight.w300),
-                      createText(text: "15", size: 36, typeFont: FontWeight.bold),
-                    ],
+      body: FutureBuilder(
+        future: NetflixDatabase.getNews(),
+        builder: (context, snapshot){
+          if(snapshot.hasData){
+            return ListView.builder(
+              itemCount: NetflixDatabase.news.length,
+              itemBuilder: (context, index){
+                List lista = NetflixDatabase.news;
+                return Padding(
+                  padding: const EdgeInsets.all(36.0),
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              createText(text: lista[index].month, size: 18, typeFont: FontWeight.w300),
+                              createText(text: lista[index].day, size: 36, typeFont: FontWeight.bold),
+                            ],
+                          ),
+                        ),
+                        Expanded(
+                          child: Card(
+                            color: Colors.black,
+                            child: Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  createImage(link: lista[index].link, height: 360),
+                                  createText(text: lista[index].title, size: 18, typeFont: FontWeight.bold),
+                                  const SizedBox(height: 12),
+                                  createText(text: lista[index].subtitle, size: 12, typeFont: FontWeight.normal),
+                                  const SizedBox(height: 12),
+                                  createText(text: lista[index].genre, size: 12, typeFont: FontWeight.normal),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                   ),
-                ),
-                Expanded(
-                  child: Column(
-                    children: [
-                    
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          );
+                );
+              },
+            );
+          }
+          else{
+            return Center(
+                child: const CircularProgressIndicator(),
+            );
+          }
         },
       ),
     );
@@ -73,11 +112,21 @@ class _NewsPage extends State<NewsPage>{
   
   createImage({
     required String link,
-    double height = 360,
+    required double height,
   }){
     return AspectRatio(
       aspectRatio: 4/3,
       child: Image.network(link, height: height),
+    );
+  }
+
+  createIcon({
+    required IconData icon,
+    required double size,
+  }){
+    return Icon(
+      icon,
+      size: size,
     );
   }
   
