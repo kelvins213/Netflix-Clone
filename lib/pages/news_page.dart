@@ -13,11 +13,73 @@ class _NewsPage extends State<NewsPage>{
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      body: Column(
-        children: [
-          const Text("oi"),
-        ],
+      backgroundColor: Colors.black,
+      appBar: AppBar(
+        centerTitle: true,
+        title: Row(
+          children: [
+
+          ],
+        ),
+      ),
+      body: ListView.builder(
+        itemCount: NetflixDatabase.news.length,
+        itemBuilder: (context, index){
+          return Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      createText(text: "SET", size: 18, typeFont: FontWeight.w300),
+                      createText(text: "15", size: 36, typeFont: FontWeight.bold),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: Column(
+                    children: [
+                    
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
       ),
     );
   }
+
+  createText({
+    required String text,
+    required double size,
+    required FontWeight typeFont,
+    Color color = Colors.white,
+  }){
+    return Text(
+      text,
+      style: TextStyle(
+        color: color,
+        fontSize: size,
+        fontWeight: typeFont,
+      ),
+    );
+  }
+  
+  createImage({
+    required String link,
+    double height = 360,
+  }){
+    return AspectRatio(
+      aspectRatio: 4/3,
+      child: Image.network(link, height: height),
+    );
+  }
+  
+
 }

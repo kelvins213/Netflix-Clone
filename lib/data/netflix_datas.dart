@@ -15,6 +15,12 @@ class NetflixDatabase{
   static NetflixSeries serie4 = NetflixSeries(serie: "https://img1.ak.crunchyroll.com/i/spire3/aa90db8dccdb4b978881fe41629bb5f71654083597_main.jpg", name: 'Series', first_icon: Icons.info, second_icon: Icons.more_vert);
   static NetflixSeries serie5 = NetflixSeries(serie: "https://www.infoanime.com.br/wa_1_p/pa_12i2wgk42q/big_yugiohduel.jpg", name: 'Series', first_icon: Icons.info, second_icon: Icons.more_vert);
 
+  static NetflixNews new1 = NetflixNews(link: 'https://trecobox.com.br/wp-content/uploads/2021/12/bleach.jpg', image: 'https://i.pinimg.com/originals/b7/93/59/b79359878cf6027a55356c79a2333dfd.png', title: 'A nova saga estreia em outubro, aqui, na Netflix.', subtitle: 'Este anime de açao conta a historia de Ichigo Kurosaki, que liberou seu bankai com apenas 17 anos', genre: 'Shounen', month: 'OUC', day: '14');
+  static NetflixNews new2 = NetflixNews(link: 'https://trecobox.com.br/wp-content/uploads/2021/12/bleach.jpg', image: 'https://i.pinimg.com/originals/b7/93/59/b79359878cf6027a55356c79a2333dfd.png', title: 'A nova saga estreia em outubro, aqui, na Netflix.', subtitle: 'Este anime de açao conta a historia de Ichigo Kurosaki, que liberou seu bankai com apenas 17 anos', genre: 'Shounen', month: 'OUC', day: '14');
+  static NetflixNews new3 = NetflixNews(link: 'https://trecobox.com.br/wp-content/uploads/2021/12/bleach.jpg', image: 'https://i.pinimg.com/originals/b7/93/59/b79359878cf6027a55356c79a2333dfd.png', title: 'A nova saga estreia em outubro, aqui, na Netflix.', subtitle: 'Este anime de açao conta a historia de Ichigo Kurosaki, que liberou seu bankai com apenas 17 anos', genre: 'Shounen', month: 'OUC', day: '14');
+  static NetflixNews new4 = NetflixNews(link: 'https://trecobox.com.br/wp-content/uploads/2021/12/bleach.jpg', image: 'https://i.pinimg.com/originals/b7/93/59/b79359878cf6027a55356c79a2333dfd.png', title: 'A nova saga estreia em outubro, aqui, na Netflix.', subtitle: 'Este anime de açao conta a historia de Ichigo Kurosaki, que liberou seu bankai com apenas 17 anos', genre: 'Shounen', month: 'OUC', day: '14');
+  static NetflixNews new5 = NetflixNews(link: 'https://trecobox.com.br/wp-content/uploads/2021/12/bleach.jpg', image: 'https://i.pinimg.com/originals/b7/93/59/b79359878cf6027a55356c79a2333dfd.png', title: 'A nova saga estreia em outubro, aqui, na Netflix.', subtitle: 'Este anime de açao conta a historia de Ichigo Kurosaki, que liberou seu bankai com apenas 17 anos', genre: 'Shounen', month: 'OUC', day: '14');
+
   static String link1 = "https://sm.ign.com/ign_br/screenshot/default/sandman-poster-1_fv1d.jpg";
   static String link2 = "https://i.pinimg.com/564x/5a/ff/9f/5aff9f15e4a54ce2df3e26659ee7d364.jpg";
   static String link3 = "https://static.wikia.nocookie.net/blacklist/images/9/99/The_Blacklist_Season_2.jpg/revision/latest?cb=20170505191018";
@@ -76,5 +82,17 @@ class NetflixDatabase{
     DownloadPage(),
   ];
 
+  static List<NetflixNews> news = [
+    new1,
+    new2,
+    new3,
+    new4,
+    new5,
+  ];
+
+  static Future <List<NetflixNews>> getNews() async{
+    await Future.delayed(const Duration(seconds: 5));
+    return  news;
+  }
 
 }
