@@ -12,114 +12,134 @@ class UserPage extends StatefulWidget{
   _UserPage createState() => _UserPage();
 }
 
-class _UserPage extends State<UserPage>{
+class _UserPage extends State<UserPage> {
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.black,
         centerTitle: false,
-        title: Expanded(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                widget.lista[0].name,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              child: Row(
+                children: [
+                  createText(text: widget.lista[0].name,
+                      size: 24,
+                      color: Colors.white),
+                ],
               ),
-              createIcon(icon: Icons.cast, color: Colors.white),
-              createIcon(icon: Icons.search, color: Colors.white),
-              createIcon(icon: Icons.person, color: Colors.white),
-            ],
-          ),
+            ),
+            Container(
+              width: MediaQuery
+                  .of(context)
+                  .size
+                  .width / 3,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  createIcon(icon: Icons.cast, color: Colors.white),
+                  createIcon(icon: Icons.search, color: Colors.white),
+                  createIcon(icon: Icons.person, color: Colors.white),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
       body: ListView(
         children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    AspectRatio(
-                        aspectRatio: 4/3,
-                        child: createImage(link: 'https://image.api.playstation.com/vulcan/ap/rnd/202106/1704/JzL1NLQvok7Pghe9W5PP2XNV.png', height: 362),
-                    ),
-                    const SizedBox(height: 15),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        createImage(link: 'https://top10.netflix.com/images/top10.png', height: 50),
-                        const SizedBox(width: 15),
-                        createText(text: "Top 3 em animes hoje", size: 16, color: Colors.white),
-                      ],
-                    ),
-                    const SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        createColumnWithIcon(icon: Icons.add, color: Colors.white, text: 'Minha lista', size: 12),
-                        ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.white,
-                            ),
-                            onPressed: onPressed,
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                createIcon(icon: Icons.play_arrow, color: Colors.black),
-                                createText(text: "Assistir", size: 24, color: Colors.black),
-                              ],
-                            ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  AspectRatio(
+                    aspectRatio: 4 / 3,
+                    child: createImage(
+                        link: 'https://image.api.playstation.com/vulcan/ap/rnd/202106/1704/JzL1NLQvok7Pghe9W5PP2XNV.png',
+                        height: 362),
+                  ),
+                  const SizedBox(height: 15),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      createImage(
+                          link: 'https://top10.netflix.com/images/top10.png',
+                          height: 50),
+                      const SizedBox(width: 15),
+                      createText(text: "Top 3 em animes hoje",
+                          size: 16,
+                          color: Colors.white),
+                    ],
+                  ),
+                  const SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      createColumnWithIcon(icon: Icons.add,
+                          color: Colors.white,
+                          text: 'Minha lista',
+                          size: 12),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.white,
                         ),
-                        createColumnWithIcon(icon: Icons.info, color: Colors.white, text: 'Info', size: 12),
-                      ],
-                    ),
-                    const SizedBox(height: 16),
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      child: Expanded(
+                        onPressed: onPressed,
                         child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            createText(text: "Continuar assistindo", size: 24, color: Colors.white),
+                            createIcon(icon: Icons.play_arrow,
+                                color: Colors.black),
+                            createText(text: "Assistir",
+                                size: 24,
+                                color: Colors.black),
                           ],
                         ),
                       ),
-                    ),
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      createColumnWithIcon(icon: Icons.info,
+                          color: Colors.white,
+                          text: 'Info',
+                          size: 12),
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+                  Container(
+                    width: MediaQuery
+                        .of(context)
+                        .size
+                        .width,
+                    child: Expanded(
+                      child: Row(
                         children: [
-                          const SizedBox(height: 12),
-                          Row(
-                            children: [
-                              createSerieWithIcons(firstIcon: Icons.info, secondIcon: Icons.more_vert, color: Colors.white, size: 160, serie: widget.lista[0]),
-                              const SizedBox(width: 16),
-                              createSerieWithIcons(firstIcon: Icons.info, secondIcon: Icons.more_vert, color: Colors.white, size: 160, serie: widget.lista[1]),
-                              const SizedBox(width: 16),
-                              createSerieWithIcons(firstIcon: Icons.info, secondIcon: Icons.more_vert, color: Colors.white, size: 160, serie: widget.lista[2]),
-                              const SizedBox(width: 16),
-                              createSerieWithIcons(firstIcon: Icons.info, secondIcon: Icons.more_vert, color: Colors.white, size: 160, serie: widget.lista[3]),
-                              const SizedBox(width: 16),
-                              createSerieWithIcons(firstIcon: Icons.info, secondIcon: Icons.more_vert, color: Colors.white, size: 160, serie: widget.lista[4]),
-                            ],
-                          ),
+                          createText(text: "Continuar assistindo",
+                              size: 24,
+                              color: Colors.white),
                         ],
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                  SizedBox(
+                    width: MediaQuery
+                        .of(context)
+                        .size
+                        .width,
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          createScroll(),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
+          ),
         ],
       ),
     );
@@ -129,13 +149,13 @@ class _UserPage extends State<UserPage>{
     required String text,
     required double size,
     required Color color,
-  }){
+  }) {
     return Text(
       text,
       style: TextStyle(
-        color: color,
-        fontSize: size,
-        fontWeight: FontWeight.bold
+          color: color,
+          fontSize: size,
+          fontWeight: FontWeight.bold
       ),
     );
   }
@@ -143,7 +163,7 @@ class _UserPage extends State<UserPage>{
   createIcon({
     required IconData icon,
     required Color color,
-  }){
+  }) {
     return Icon(
       icon,
       size: 30,
@@ -156,7 +176,7 @@ class _UserPage extends State<UserPage>{
     required Color color,
     required String text,
     required double size,
-  }){
+  }) {
     return Column(
       children: [
         createIcon(icon: icon, color: color),
@@ -171,20 +191,20 @@ class _UserPage extends State<UserPage>{
     required Color color,
     required double size,
     required NetflixSeries serie,
-  }){
+  }) {
     return Column(
       children: [
         Image.network(serie.serie, height: 160),
         Container(
           width: 114,
           color: Color(0xFF1C1C1C).withOpacity(0.5),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                createIcon(icon: Icons.info, color: Colors.white),
-                createIcon(icon: Icons.more_vert, color: Colors.white),
-              ],
-            ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              createIcon(icon: Icons.info, color: Colors.white),
+              createIcon(icon: Icons.more_vert, color: Colors.white),
+            ],
+          ),
         ),
       ],
     );
@@ -193,10 +213,55 @@ class _UserPage extends State<UserPage>{
   createImage({
     required String link,
     required double height,
-  }){
+  }) {
     return Image.network(link, height: height);
   }
 
-  onPressed(){}
+  createScroll(){
+    return SizedBox(
+          width: MediaQuery.of(context).size.width,
+          child: ListView.separated(
+              physics: ScrollPhysics(),
+              //scrollDirection: Axis.horizontal,
+              shrinkWrap: true,
+              separatorBuilder: (context, index) {return SizedBox(height: 16);},
+              itemCount: widget.lista.length,
+              itemBuilder: (context, index){
+                return Row(
+                  children: [
+                    createSerieWithIcons(firstIcon: Icons.info, secondIcon: Icons.more_vert, color: Colors.white, size: 160, serie: widget.lista[index]),
+                  ],
+                );
+              }
+          ),
+        );
+  }
 
+  onPressed() {}
 }
+
+/*
+Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width,
+                              child: ListView.separated(
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  //scrollDirection: Axis.horizontal,
+                                  shrinkWrap: true,
+                                  separatorBuilder: (context, index) {return SizedBox(height: 16);},
+                                  itemCount: widget.lista.length,
+                                  itemBuilder: (context, index){
+                                     return Row(
+                                        children: [
+                                          createSerieWithIcons(firstIcon: Icons.info, secondIcon: Icons.more_vert, color: Colors.white, size: 160, serie: widget.lista[index]),
+                                        ],
+                                      );
+                                    }
+                                  ),
+                            ),
+                          ],
+                        ),
+*/

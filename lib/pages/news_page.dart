@@ -20,19 +20,23 @@ class _NewsPage extends State<NewsPage>{
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                createText(text: "Novidades", size: 24, typeFont: FontWeight.normal),
-              ],
+            Container(
+              width: MediaQuery.of(context).size.width/2,
+              child: Row(
+                children: [
+                  createText(text: "Novidades", size: 24, typeFont: FontWeight.normal),
+                ],
+              ),
             ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                createIcon(icon: Icons.notification_add, size: 24),
-                const SizedBox(width: 12),
-                createIcon(icon: Icons.person, size: 24),
-              ],
+            Container(
+              width: MediaQuery.of(context).size.width/3,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  createIcon(icon: Icons.notification_add, size: 24),
+                  createIcon(icon: Icons.person, size: 24),
+                ],
+              ),
             ),
           ],
         ),
@@ -129,6 +133,4 @@ class _NewsPage extends State<NewsPage>{
       size: size,
     );
   }
-  
-
 }
