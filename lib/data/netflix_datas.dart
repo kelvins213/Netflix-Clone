@@ -1,5 +1,6 @@
 import 'package:netflix_clone/domain/netflix_atributes.dart';
 import 'package:flutter/material.dart';
+import 'package:netflix_clone/pages/avatar_page.dart';
 import 'package:netflix_clone/pages/download_page.dart';
 import 'package:netflix_clone/pages/game_page.dart';
 import 'package:netflix_clone/pages/home_page.dart';
@@ -8,6 +9,10 @@ import 'package:netflix_clone/pages/news_page.dart';
 class NetflixDatabase{
 
   static NetflixLogin login = NetflixLogin(title: "Sign In", logo: "https://gkpb.com.br/wp-content/uploads/2016/06/novo-icone-identidade-visual-logo-netflix-blog-gkpb.jpg");
+  static UserAvatar user1 = UserAvatar(link: 'https://geekninja.com.br/wp-content/uploads/2022/07/Bastard.jpg');
+  static UserAvatar user2 = UserAvatar(link: 'https://geekninja.com.br/wp-content/uploads/2022/07/Bastard.jpg');
+  static UserAvatar user3 = UserAvatar(link: 'https://geekninja.com.br/wp-content/uploads/2022/07/Bastard.jpg');
+  static UserAvatar user4 = UserAvatar(link: 'https://geekninja.com.br/wp-content/uploads/2022/07/Bastard.jpg');
 
   static NetflixSeries serie1 = NetflixSeries(serie: "https://img1.ak.crunchyroll.com/i/spire2/f31efd8a9acebc82b2ebbfba0cc2cb2c1646147551_main.jpg", name: 'Series', first_icon: Icons.info, second_icon: Icons.more_vert);
   static NetflixSeries serie2 = NetflixSeries(serie: "https://upload.wikimedia.org/wikipedia/pt/e/e9/Breaking_bad_2_temporada_poster.jpg", name: 'Series', first_icon: Icons.info, second_icon: Icons.more_vert);
@@ -88,6 +93,13 @@ class NetflixDatabase{
     new3,
     new4,
     new5,
+  ];
+
+  static List<UserAvatar> userAvatars = [
+    user1,
+    user2,
+    user3,
+    user4,
   ];
 
   static Future <List<NetflixNews>> getNews() async{

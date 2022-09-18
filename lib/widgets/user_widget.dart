@@ -217,51 +217,32 @@ class _UserPage extends State<UserPage> {
     return Image.network(link, height: height);
   }
 
-  createScroll(){
+  createScroll () {
     return SizedBox(
-          width: MediaQuery.of(context).size.width,
-          child: ListView.separated(
-              physics: ScrollPhysics(),
-              //scrollDirection: Axis.horizontal,
-              shrinkWrap: true,
-              separatorBuilder: (context, index) {return SizedBox(height: 16);},
-              itemCount: widget.lista.length,
-              itemBuilder: (context, index){
-                return Row(
-                  children: [
-                    createSerieWithIcons(firstIcon: Icons.info, secondIcon: Icons.more_vert, color: Colors.white, size: 160, serie: widget.lista[index]),
-                  ],
-                );
-              }
-          ),
-        );
+      width: MediaQuery.of(context).size.width,
+      child: ListView.separated(
+          //physics: const NeverScrollableScrollPhysics(),
+          //scrollDirection: Axis.horizontal,
+          shrinkWrap: true,
+          separatorBuilder: (context, index) {return SizedBox(width: 16);},
+          itemCount: widget.lista.length,
+          itemBuilder: (context, index){
+            return Row(
+              children: [
+                createSerieWithIcons(firstIcon: Icons.info, secondIcon: Icons.more_vert, color: Colors.white, size: 160, serie: widget.lista[index]),
+              ],
+            );
+          }
+      ),
+    );
   }
 
   onPressed() {}
 }
 
+
+
 /*
-Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width,
-                              child: ListView.separated(
-                                  physics: const NeverScrollableScrollPhysics(),
-                                  //scrollDirection: Axis.horizontal,
-                                  shrinkWrap: true,
-                                  separatorBuilder: (context, index) {return SizedBox(height: 16);},
-                                  itemCount: widget.lista.length,
-                                  itemBuilder: (context, index){
-                                     return Row(
-                                        children: [
-                                          createSerieWithIcons(firstIcon: Icons.info, secondIcon: Icons.more_vert, color: Colors.white, size: 160, serie: widget.lista[index]),
-                                        ],
-                                      );
-                                    }
-                                  ),
-                            ),
-                          ],
+
                         ),
 */

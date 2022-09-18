@@ -12,6 +12,7 @@ class NetflixLogin{
 }
 
 class NetflixSeries{
+
   final String serie;
   final String name;
   final IconData first_icon;
@@ -47,3 +48,18 @@ class NetflixNews{
     required this.day,
   });
 }
+
+class UserAvatar{
+
+  final String link;
+
+  UserAvatar({
+    required this.link,
+  });
+}
+
+
+
+
+
+

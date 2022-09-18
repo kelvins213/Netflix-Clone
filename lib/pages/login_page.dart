@@ -4,6 +4,7 @@ import  'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:netflix_clone/data/netflix_datas.dart';
 import 'package:netflix_clone/domain/netflix_atributes.dart';
+import 'package:netflix_clone/pages/avatar_page.dart';
 import 'package:netflix_clone/pages/botton_navegation_page.dart';
 import 'package:netflix_clone/pages/home_page.dart';
 
@@ -112,7 +113,7 @@ class _LoginPage extends State<LoginPage>{
           context,
           MaterialPageRoute(
             builder: (context) {
-              return BottonNavegationApp();
+              return AvatarPage();
             },
           ),
         );
