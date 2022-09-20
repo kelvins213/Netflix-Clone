@@ -60,7 +60,7 @@ class _UserPage extends State<UserPage> {
                   AspectRatio(
                     aspectRatio: 4 / 3,
                     child: createImage(
-                        link: 'https://image.api.playstation.com/vulcan/ap/rnd/202106/1704/JzL1NLQvok7Pghe9W5PP2XNV.png',
+                        link: 'https://upload.wikimedia.org/wikipedia/pt/4/4b/Jujutsu_Kaisen_Cover.png',
                         height: 362),
                   ),
                   const SizedBox(height: 15),
@@ -129,10 +129,9 @@ class _UserPage extends State<UserPage> {
                         .width,
                     child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: [
-                          createScroll(),
-                        ],
+                      child: Container(
+                        height: 200,
+                        child: createScroll(),
                       ),
                     ),
                   ),
@@ -221,8 +220,9 @@ class _UserPage extends State<UserPage> {
     return SizedBox(
       width: MediaQuery.of(context).size.width,
       child: ListView.separated(
-          //physics: const NeverScrollableScrollPhysics(),
-          //scrollDirection: Axis.horizontal,
+
+          physics: const NeverScrollableScrollPhysics(),
+          scrollDirection: Axis.horizontal,
           shrinkWrap: true,
           separatorBuilder: (context, index) {return SizedBox(width: 16);},
           itemCount: widget.lista.length,
@@ -239,10 +239,3 @@ class _UserPage extends State<UserPage> {
 
   onPressed() {}
 }
-
-
-
-/*
-
-                        ),
-*/
