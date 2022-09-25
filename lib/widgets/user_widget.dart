@@ -3,10 +3,15 @@ import 'package:netflix_clone/domain/netflix_atributes.dart';
 
 class UserPage extends StatefulWidget{
   final List lista;
+  final String textTitle;
+  final String link;
+  //exigir uma string "top 3 filmes hoje da HomePage"
 
   UserPage({
     Key? key,
     required this.lista,
+    required this.textTitle,
+    required this.link,
   }) : super(key: key);
   @override
   _UserPage createState() => _UserPage();
@@ -60,7 +65,8 @@ class _UserPage extends State<UserPage> {
                   AspectRatio(
                     aspectRatio: 4 / 3,
                     child: createImage(
-                        link: 'https://image.api.playstation.com/vulcan/ap/rnd/202106/1704/JzL1NLQvok7Pghe9W5PP2XNV.png',
+                      //pedir a variavel link por parametro
+                        link: widget.link,
                         height: 362),
                   ),
                   const SizedBox(height: 15),
@@ -71,7 +77,8 @@ class _UserPage extends State<UserPage> {
                           link: 'https://top10.netflix.com/images/top10.png',
                           height: 50),
                       const SizedBox(width: 15),
-                      createText(text: "Top 3 em animes hoje",
+                      createText(
+                          text: widget.textTitle,
                           size: 16,
                           color: Colors.white),
                     ],
@@ -129,10 +136,9 @@ class _UserPage extends State<UserPage> {
                         .width,
                     child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: [
-                          createScroll(),
-                        ],
+                      child: Container(
+                        height: 250,
+                        child: createScroll(),
                       ),
                     ),
                   ),
@@ -190,11 +196,11 @@ class _UserPage extends State<UserPage> {
     required IconData secondIcon,
     required Color color,
     required double size,
-    required NetflixSeries serie,
+    required String link,
   }) {
     return Column(
       children: [
-        Image.network(serie.serie, height: 160),
+        Image.network(link, height: 160),
         Container(
           width: 114,
           color: Color(0xFF1C1C1C).withOpacity(0.5),
@@ -218,23 +224,20 @@ class _UserPage extends State<UserPage> {
   }
 
   createScroll () {
-    return SizedBox(
-      width: MediaQuery.of(context).size.width,
-      child: ListView.separated(
-          //physics: const NeverScrollableScrollPhysics(),
-          //scrollDirection: Axis.horizontal,
+    return ListView.separated(
+          physics: const NeverScrollableScrollPhysics(),
+          scrollDirection: Axis.horizontal,
           shrinkWrap: true,
           separatorBuilder: (context, index) {return SizedBox(width: 16);},
           itemCount: widget.lista.length,
           itemBuilder: (context, index){
             return Row(
               children: [
-                createSerieWithIcons(firstIcon: Icons.info, secondIcon: Icons.more_vert, color: Colors.white, size: 160, serie: widget.lista[index]),
+                createSerieWithIcons(firstIcon: Icons.info, secondIcon: Icons.more_vert, color: Colors.white, size: 160, link: widget.lista[index].link),
               ],
             );
           }
-      ),
-    );
+      );
   }
 
   onPressed() {}

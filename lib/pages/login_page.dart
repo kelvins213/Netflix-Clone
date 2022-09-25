@@ -113,7 +113,7 @@ class _LoginPage extends State<LoginPage>{
           context,
           MaterialPageRoute(
             builder: (context) {
-              return AvatarPage();
+              return BottonNavegationApp();
             },
           ),
         );

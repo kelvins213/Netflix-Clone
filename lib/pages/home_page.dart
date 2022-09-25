@@ -27,9 +27,9 @@ class _HomePage extends State<HomePage>{
                 logo,
                 height: 40,
               ),
-              creatElevatedButton(text: 'Séries', lista: NetflixDatabase.series),
-              creatElevatedButton(text: 'Filmes', lista: NetflixDatabase.series),
-              creatElevatedButton(text: 'Minha lista', lista: NetflixDatabase.series),
+              creatElevatedButton(text: 'Séries', lista: NetflixDatabase.series, textTitle: 'Top 3 series hoje', image: 'https://image.api.playstation.com/vulcan/ap/rnd/202106/1704/JzL1NLQvok7Pghe9W5PP2XNV.png'),
+              creatElevatedButton(text: 'Filmes', lista: NetflixDatabase.films, textTitle: 'Top 3 filmes hoje', image: 'https://4.bp.blogspot.com/-I93v6lg---4/WDwYs7fAebI/AAAAAAAAE7E/R50nlPPlKPAZjWGQeChjBPe2Iln_FErygCLcB/s1600/Synchronicity-Netflix.jpg'),
+              creatElevatedButton(text: 'Minha lista', lista: NetflixDatabase.series, textTitle: 'Top 3 da sua lista', image: 'https://image.api.playstation.com/vulcan/ap/rnd/202106/1704/JzL1NLQvok7Pghe9W5PP2XNV.png'),
             ],
           ),
         ),
@@ -67,14 +67,16 @@ class _HomePage extends State<HomePage>{
     );
   }
   creatElevatedButton({
+    required String textTitle,
     required String text,
     required List lista,
+    required String image,
   }){
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.black,
       ),
-      onPressed: () => onPressed(lista),
+      onPressed: () => onPressed(lista, textTitle, image),
       child: Text(
         text,
         style: TextStyle(
@@ -138,12 +140,12 @@ class _HomePage extends State<HomePage>{
     );
   }
 
-  onPressed(List lista){
+  onPressed(List lista, String textTitle, String image){
     Navigator.push(
       context,
       MaterialPageRoute(
           builder: (context) {
-           return UserPage(lista: lista);
+           return UserPage(lista: lista, textTitle: textTitle, link: image);
           }
       ),
     );

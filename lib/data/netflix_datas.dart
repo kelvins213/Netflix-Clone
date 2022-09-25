@@ -14,11 +14,17 @@ class NetflixDatabase{
   static UserAvatar user3 = UserAvatar(link: 'https://geekninja.com.br/wp-content/uploads/2022/07/Bastard.jpg');
   static UserAvatar user4 = UserAvatar(link: 'https://geekninja.com.br/wp-content/uploads/2022/07/Bastard.jpg');
 
-  static NetflixSeries serie1 = NetflixSeries(serie: "https://img1.ak.crunchyroll.com/i/spire2/f31efd8a9acebc82b2ebbfba0cc2cb2c1646147551_main.jpg", name: 'Series', first_icon: Icons.info, second_icon: Icons.more_vert);
-  static NetflixSeries serie2 = NetflixSeries(serie: "https://upload.wikimedia.org/wikipedia/pt/e/e9/Breaking_bad_2_temporada_poster.jpg", name: 'Series', first_icon: Icons.info, second_icon: Icons.more_vert);
-  static NetflixSeries serie3 = NetflixSeries(serie: "https://br.web.img2.acsta.net/pictures/21/09/05/23/33/4941501.jpg", name: 'Series', first_icon: Icons.info, second_icon: Icons.more_vert);
-  static NetflixSeries serie4 = NetflixSeries(serie: "https://img1.ak.crunchyroll.com/i/spire3/aa90db8dccdb4b978881fe41629bb5f71654083597_main.jpg", name: 'Series', first_icon: Icons.info, second_icon: Icons.more_vert);
-  static NetflixSeries serie5 = NetflixSeries(serie: "https://www.infoanime.com.br/wa_1_p/pa_12i2wgk42q/big_yugiohduel.jpg", name: 'Series', first_icon: Icons.info, second_icon: Icons.more_vert);
+  static NetflixSeries serie1 = NetflixSeries(link: "https://img1.ak.crunchyroll.com/i/spire2/f31efd8a9acebc82b2ebbfba0cc2cb2c1646147551_main.jpg");
+  static NetflixSeries serie2 = NetflixSeries(link: "https://upload.wikimedia.org/wikipedia/pt/e/e9/Breaking_bad_2_temporada_poster.jpg");
+  static NetflixSeries serie3 = NetflixSeries(link: "https://br.web.img2.acsta.net/pictures/21/09/05/23/33/4941501.jpg");
+  static NetflixSeries serie4 = NetflixSeries(link: "https://img1.ak.crunchyroll.com/i/spire3/aa90db8dccdb4b978881fe41629bb5f71654083597_main.jpg");
+  static NetflixSeries serie5 = NetflixSeries(link: "https://www.infoanime.com.br/wa_1_p/pa_12i2wgk42q/big_yugiohduel.jpg");
+
+  static NetflixFilms film1 = NetflixFilms(link: "https://static.stealthelook.com.br/wp-content/uploads/2022/01/o-ranking-dos-filmes-mais-assistidos-da-netflix-imperdoavel-20220113201454.jpg");
+  static NetflixFilms film2 = NetflixFilms(link: "https://br.web.img3.acsta.net/c_310_420/pictures/22/08/26/16/46/2639434.jpg");
+  static NetflixFilms film3 = NetflixFilms(link: "https://br.web.img2.acsta.net/c_310_420/pictures/22/05/24/16/14/3798761.png");
+  static NetflixFilms film4 = NetflixFilms(link: "https://static.stealthelook.com.br/wp-content/uploads/2022/01/o-ranking-dos-filmes-mais-assistidos-da-netflix-enola-holmes-20220113201349.jpg");
+  static NetflixFilms film5 = NetflixFilms(link: "http://pm1.narvii.com/7444/9676cece55a35e3af165e788f5f31314bd7df3f5r1-666-1000v2_uhq.jpg");
 
   static NetflixNews new1 = NetflixNews(link: 'https://trecobox.com.br/wp-content/uploads/2021/12/bleach.jpg', image: 'https://i.pinimg.com/originals/b7/93/59/b79359878cf6027a55356c79a2333dfd.png', title: 'A nova saga estreia em outubro, aqui, na Netflix.', subtitle: 'Este anime de açao conta a historia de Ichigo Kurosaki, que liberou seu bankai com apenas 17 anos', genre: 'Shounen', month: 'OUC', day: '14');
   static NetflixNews new2 = NetflixNews(link: 'https://trecobox.com.br/wp-content/uploads/2021/12/bleach.jpg', image: 'https://i.pinimg.com/originals/b7/93/59/b79359878cf6027a55356c79a2333dfd.png', title: 'A nova saga estreia em outubro, aqui, na Netflix.', subtitle: 'Este anime de açao conta a historia de Ichigo Kurosaki, que liberou seu bankai com apenas 17 anos', genre: 'Shounen', month: 'OUC', day: '14');
@@ -51,6 +57,14 @@ class NetflixDatabase{
     serie3,
     serie4,
     serie5,
+  ];
+
+  static List<NetflixFilms> films = [
+    film1,
+    film2,
+    film3,
+    film4,
+    film5,
   ];
 
   static List<String>tradicionalSeries = [

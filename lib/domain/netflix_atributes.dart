@@ -13,16 +13,25 @@ class NetflixLogin{
 
 class NetflixSeries{
 
-  final String serie;
-  final String name;
-  final IconData first_icon;
-  final IconData second_icon;
+  final String link;
+  final String name = "Series";
+  final IconData first_icon = Icons.info;
+  final IconData second_icon = Icons.more_vert;
 
   NetflixSeries({
-    required this.serie,
-    required this.name,
-    required this.first_icon,
-    required this.second_icon,
+    required this.link,
+  });
+}
+
+class NetflixFilms{
+
+  final String link;
+  final String name = "Filmes";
+  final IconData first_icon = Icons.info;
+  final IconData second_icon = Icons.more_vert;
+
+  NetflixFilms({
+    required this.link,
   });
 }
 
