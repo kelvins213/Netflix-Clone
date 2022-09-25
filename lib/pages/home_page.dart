@@ -110,33 +110,29 @@ class _HomePage extends State<HomePage>{
   }){
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          createColumn(seriesList: list),
-        ],
-      ),
+      child: Container(
+          height: 150,
+          child: createColumn(seriesList: list),
+        ),
     );
   }
 
   createColumn({
     required List seriesList,
   }){
-    return Row(
-      children: [
-        Image.network(seriesList[0], height: 160),
-        const SizedBox(width: 16),
-        Image.network(seriesList[1], height: 160),
-        const SizedBox(width: 16),
-        Image.network(seriesList[2], height: 160),
-        const SizedBox(width: 16),
-        Image.network(seriesList[3], height: 160),
-        const SizedBox(width: 16),
-        Image.network(seriesList[4], height: 160),
-        const SizedBox(width: 16),
-        Image.network(seriesList[5], height: 160),
-        const SizedBox(width: 16),
-      ],
+    return ListView.separated(
+        scrollDirection: Axis.horizontal,
+        physics: const NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
+        itemCount: seriesList.length,
+        separatorBuilder: (context, index){return const SizedBox(width: 16);},
+        itemBuilder: (context, index) {
+            return Row(
+              children: [
+                Image.network(seriesList[index], height: 160),
+              ],
+            );
+          },
     );
   }
 
