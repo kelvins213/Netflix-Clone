@@ -11,6 +11,16 @@ class HomePage extends StatefulWidget{
 class _HomePage extends State<HomePage>{
 
   String logo = NetflixDatabase.login.logo;
+  List <String> sectionsTitles = [
+    'Populares na Netflix',
+    'Em alta',
+    'Assista de novo',
+  ];
+  List <List> list = [
+    NetflixDatabase.tradicionalSeries,
+    NetflixDatabase.onTopSeries,
+    NetflixDatabase.watchAgainSeries,
+  ];
 
   @override
   Widget build(BuildContext context){
@@ -41,24 +51,46 @@ class _HomePage extends State<HomePage>{
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-
-                const Divider(),
-                writeTitle(text: 'Populares na Netflix'),
-                const Divider(),
-                createScrollView(list: NetflixDatabase.tradicionalSeries),
-                const Divider(),
-
-                const Divider(),
-                writeTitle(text: 'Em alta'),
-                const Divider(),
-                createScrollView(list: NetflixDatabase.onTopSeries),
-                const Divider(),
-
-                const Divider(),
-                writeTitle(text: 'Assista de novo'),
-                const Divider(),
-                createScrollView(list: NetflixDatabase.watchAgainSeries),
-                const Divider(),
+                ListView.separated(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                    itemCount: sectionsTitles.length,
+                    itemBuilder: (context, index){
+                      return Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text(
+                                sectionsTitles[index],
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 24,
+                                ),
+                              ),
+                            ],
+                          ),
+                          SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Container(
+                              height: 200,
+                              child: Row(
+                                children: [
+                                  createColumn(seriesList: list[index]),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                    separatorBuilder: (context, index) {
+                      return const SizedBox(
+                        height: 4,
+                      );
+                    },
+                ),
               ],
             ),
           ],
@@ -66,6 +98,7 @@ class _HomePage extends State<HomePage>{
       ),
     );
   }
+
   creatElevatedButton({
     required String textTitle,
     required String text,
@@ -84,36 +117,6 @@ class _HomePage extends State<HomePage>{
           fontWeight: FontWeight.bold,
         ),
       ),
-    );
-  }
-
-  writeTitle({
-    required String text,
-  }){
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Text(
-          text,
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 24,
-          ),
-        ),
-      ],
-    );
-  }
-
-  createScrollView({
-    required List list,
-  }){
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Container(
-          height: 150,
-          child: createColumn(seriesList: list),
-        ),
     );
   }
 
@@ -147,27 +150,3 @@ class _HomePage extends State<HomePage>{
     );
   }
 }
-
-/*
-createColumn({
-    required List seriesList,
-  }){
-    return ListView.builder(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      itemCount: seriesList.length,
-      itemBuilder: (context, index){
-        return Column(
-          children: [
-            Row(
-              children: [
-                Image.network(seriesList[index]),
-                const SizedBox(width: 10),
-              ],
-            ),
-          ],
-        );
-      },
-    );
-  }
-*/
