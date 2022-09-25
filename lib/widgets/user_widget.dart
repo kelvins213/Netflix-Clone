@@ -65,7 +65,6 @@ class _UserPage extends State<UserPage> {
                   AspectRatio(
                     aspectRatio: 4 / 3,
                     child: createImage(
-                      //pedir a variavel link por parametro
                         link: widget.link,
                         height: 362),
                   ),
@@ -237,15 +236,8 @@ class _UserPage extends State<UserPage> {
               ],
             );
           }
-      );
+    );
   }
 
   onPressed() {}
 }
-
-
-
-/*
-
-                        ),
-*/
