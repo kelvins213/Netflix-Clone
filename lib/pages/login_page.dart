@@ -1,8 +1,8 @@
 import 'dart:convert';
-
 import  'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:netflix_clone/data/netflix_datas.dart';
+import 'package:netflix_clone/data/netflix_datas_helper.dart';
 import 'package:netflix_clone/domain/netflix_atributes.dart';
 import 'package:netflix_clone/pages/avatar_page.dart';
 import 'package:netflix_clone/pages/botton_navegation_page.dart';
@@ -17,9 +17,6 @@ class LoginPage extends StatefulWidget{
 
 class _LoginPage extends State<LoginPage>{
   NetflixLogin objeto = NetflixDatabase.login;
-  //O banco sempre é chamado na primiera págin aque é executada
-  DBHelper().initDB();
-  
   TextEditingController userController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -27,6 +24,8 @@ class _LoginPage extends State<LoginPage>{
 
   @override
   Widget build(BuildContext context){
+    //O banco sempre é chamado na primiera págin aque é executada
+    DBHelper().initDB();
     return Scaffold(
       backgroundColor: Colors.black,
       body: ListView(
