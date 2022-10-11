@@ -7,10 +7,10 @@ class DBHelper {
 
   initDB() async {
     String databasePath = await getDatabasesPath();
-    String path = join(databasePath, "netflix2.db"); //netflix.db vira o nome do banco de dados
+    String path = join(databasePath, "netflix11.db"); //netflix.db vira o nome do banco de dados
     Database database = await openDatabase(
       path,
-      version: 1,
+      version: 2,
       onCreate: onCreate,
       onUpgrade: onUpgrade,
     );
@@ -20,28 +20,28 @@ class DBHelper {
   }
 
   Future<FutureOr<void>> onCreate(Database db, int version) async{
-      String sql = 'create table Serie_link(nameList INTERGER PRIMARY KEY, serieLink varchar(200));';
+      String sql = 'create table Serie_link(serie INTERGER PRIMARY KEY, serieLink varchar(200));';
       await db.execute(sql);
 
-      sql = 'create table Film_link(nameList INTERGER PRIMARY KEY, filmsLink varchar(200));';
+      sql = 'create table Film_link(film INTERGER PRIMARY KEY, filmLink varchar(200));';
       await db.execute(sql);
 
-      sql = 'create table News(nameList INTERGER PRIMARY KEY, newsLink varchar(200), imageLink varchar(200), title varchar(100), subtitle varchar(100), genre varchar(100), month varchar(20), day varchar(20));';
+      sql = 'create table News(new INTERGER PRIMARY KEY, newsLink varchar(200), imageLink varchar(200), title varchar(100), subtitle varchar(100), genre varchar(100), month varchar(20), day varchar(20));';
       await db.execute(sql);
 
-      sql = 'create table tradicionalSerieLink(nameList INTERGER PRIMARY KEY, link varchar(200));';
+      sql = 'create table tradicionalSerieLink(tradicional INTERGER PRIMARY KEY, link varchar(200));';
       await db.execute(sql);
 
-      sql = 'create table onTopSerieLink(nameList INTERGER PRIMARY KEY, link varchar(200));';
+      sql = 'create table onTopSerieLink(ontop INTERGER PRIMARY KEY, link varchar(200));';
       await db.execute(sql);
 
-      sql = 'create table watchAgainSerieLink(nameList INTERGER PRIMARY KEY, link varchar(200));';
+      sql = 'create table watchAgainSerieLink(again INTERGER PRIMARY KEY, link varchar(200));';
       await db.execute(sql);
 
-      sql = 'create table avatarUser(nameList INTERGER PRIMARY KEY, link varchar(200));';
+      sql = 'create table avatarUser(avatar INTERGER PRIMARY KEY, link varchar(200));';
       await db.execute(sql);
 
-      sql = 'create table pagesList(nameList INTERGER PRIMARY KEY, link varchar(200));';
+      sql = 'create table pagesList(page INTERGER PRIMARY KEY, link varchar(200));';
       await db.execute(sql);
 
       //this method will insert the values on the tables above
@@ -49,8 +49,8 @@ class DBHelper {
   }
 
   Future<void> onUpgrade(Database db, int oldVersion, int newVersion) async {
-    if (oldVersion == 1 && newVersion == 2) {
-      insertDatas(db: db);
+    if(oldVersion == 1 && newVersion == 2){
+      onCreate(db, newVersion);
     }
   }
 
@@ -68,44 +68,46 @@ class DBHelper {
 
     String sql;
 
+    //dando erro nos comandos insert
+    //dando problema na atualização do banco, provavelmente
     for (int i = 0; i < series.length; i++) {
-      sql = 'insert into Serie_link(nameList, serieLink) values (series, \'${series[i].link}\');';
+      sql = 'insert into Serie_link(serie, serieLink) values (serie-\'$i\',\'${series[i].link}\');';
       print(sql);
       await db.execute(sql);
     }
 
     for (int i = 0; i < films.length; i++) {
-      sql = 'insert into Film_link(nameList, filmLink) values (films, \'${films[i].link}\');';
+      sql = 'insert into Film_link(film, filmLink) values (film-\'$i\', \'${films[i].link}\');';
       await db.execute(sql);
     }
 
     for (int i = 0; i < news.length; i++) {
-      sql = 'insert into News(nameList, newsLink, imageLink, title, subtitle, genre, month, day) values (news, \'${news[i].link}\',\'${news[i].image}\', \'${news[i].title}\', \'${news[i].subtitle}\', \'${news[i].genre}\', \'${news[i].month}\', \'${news[i].day}\');';
+      sql = 'insert into News(new, newsLink, imageLink, title, subtitle, genre, month, day) values (new-\'$i\',\'${news[i].link}\',\'${news[i].image}\', \'${news[i].title}\', \'${news[i].subtitle}\', \'${news[i].genre}\', \'${news[i].month}\', \'${news[i].day}\');';
       await db.execute(sql);
     }
 
     for (int i = 0; i < tradicional.length; i++){
-      sql = 'insert into tradicionalSerieLink(nameList, link) values (tradicionalSeriesLink, \'${tradicional[i].link}\');';
+      sql = 'insert into tradicionalSerieLink(tradicional, link) values (tradicional-$i,\'${tradicional[i]}\');';
       await db.execute(sql);
     }
 
     for (int i = 0; i < onTop.length; i++) {
-      sql = 'insert into onTopSerieLink(nameList, link) values (onTopSeries, \'${onTop[i].link}\');';
+      sql = 'insert into onTopSerieLink(top, link) values (top-\'$i\',\'${onTop[i]}\');';
       await db.execute(sql);
     }
 
     for (int i = 0; i < again.length; i++) {
-      sql = 'insert into watchAgainSerieLink(nameList, link) values (watchAgainSeries, \'${again[i].link}\');';
+      sql = 'insert into watchAgainSerieLink(again, link) values (again-\'$i\',\'${again[i]}\');';
       await db.execute(sql);
     }
 
     for (int i = 0; i < pages.length; i++) {
-      sql = 'insert into pagesList(nameList, link) values (pageList, \'${pages[i].link}\');';
+      sql = 'insert into pagesList(page, link) values (page-\'$i\',\'${pages[i]}\');';
       await db.execute(sql);
     }
 
     for (int i = 0; i < avatars.length; i++) {
-      sql = 'insert into avatarUser(nameList, link) values (userAvatars, \'${avatars[i].link}\');';
+      sql = 'insert into avatarUser(avatar, link) values (avatar-\'$i\',,\'${avatars[i].link}\');';
       await db.execute(sql);
     }
   }
