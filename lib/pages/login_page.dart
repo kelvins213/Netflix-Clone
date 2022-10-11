@@ -17,7 +17,9 @@ class LoginPage extends StatefulWidget{
 
 class _LoginPage extends State<LoginPage>{
   NetflixLogin objeto = NetflixDatabase.login;
-
+  //O banco sempre é chamado na primiera págin aque é executada
+  DBHelper().initDB();
+  
   TextEditingController userController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
