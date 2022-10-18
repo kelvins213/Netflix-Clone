@@ -21,7 +21,29 @@ class NetflixSeries{
   NetflixSeries({
     required this.link,
   });
+
+  /*
+    NetflixSeries.fromJson(Map<String, dynamic> json) {
+      link = json[''];
+    }
+
+    PacoteTuristico.fromJson(Map<String, dynamic> json) {
+      nome = json['head'];
+      imagem = json['url_image'];
+      cidade = json['city'];
+      titulo = json['title'];
+      transporte = json['transport'];
+      validade = json['validity'];
+      precoAntigo = json['old_price'];
+      precoAtual = json['current_price'];
+      numDiarias = json['nights'];
+      desconto = json['discount'];
+      numPessoas = json['persons'];
+      numParcelas = 12;
+    }
+  */
 }
+
 
 class NetflixFilms{
 
@@ -35,6 +57,7 @@ class NetflixFilms{
   });
 }
 
+//no banco, tem os links. Portanto, preciso de um json com os objetos correspondentes, para pegar esses links
 class NetflixNews{
 
   final String link;
@@ -66,9 +89,3 @@ class UserAvatar{
     required this.link,
   });
 }
-
-
-
-
-
-
