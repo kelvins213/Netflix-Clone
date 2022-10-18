@@ -7,7 +7,7 @@ class DBHelper {
 
   initDB() async {
     String databasePath = await getDatabasesPath();
-    String path = join(databasePath, "netflix11.db"); //netflix.db vira o nome do banco de dados
+    String path = join(databasePath, "netflix3.db"); //netflix.db vira o nome do banco de dados
     Database database = await openDatabase(
       path,
       version: 2,
@@ -50,7 +50,7 @@ class DBHelper {
 
   Future<void> onUpgrade(Database db, int oldVersion, int newVersion) async {
     if(oldVersion == 1 && newVersion == 2){
-      onCreate(db, newVersion);
+      //onCreate(db, newVersion);
     }
   }
 
@@ -70,44 +70,44 @@ class DBHelper {
 
     //dando erro nos comandos insert
     //dando problema na atualização do banco, provavelmente
+    //problema nas aspas simples e duplas
     for (int i = 0; i < series.length; i++) {
-      sql = 'insert into Serie_link(serie, serieLink) values (serie-\'$i\',\'${series[i].link}\');';
-      print(sql);
+      sql = "insert into Serie_link(serie, serieLink) values ('serie-$i', '${series[i].link}');";
       await db.execute(sql);
     }
 
     for (int i = 0; i < films.length; i++) {
-      sql = 'insert into Film_link(film, filmLink) values (film-\'$i\', \'${films[i].link}\');';
+      sql = "insert into Film_link(film, filmLink) values ('film-$i', '${films[i].link}');";
       await db.execute(sql);
     }
 
     for (int i = 0; i < news.length; i++) {
-      sql = 'insert into News(new, newsLink, imageLink, title, subtitle, genre, month, day) values (new-\'$i\',\'${news[i].link}\',\'${news[i].image}\', \'${news[i].title}\', \'${news[i].subtitle}\', \'${news[i].genre}\', \'${news[i].month}\', \'${news[i].day}\');';
+      sql = "insert into News(new, newsLink, imageLink, title, subtitle, genre, month, day) values ('new-$i','${news[i].link}','${news[i].image}', '${news[i].title}', '${news[i].subtitle}', '${news[i].genre}', '${news[i].month}', '${news[i].day}');";
       await db.execute(sql);
     }
 
     for (int i = 0; i < tradicional.length; i++){
-      sql = 'insert into tradicionalSerieLink(tradicional, link) values (tradicional-$i,\'${tradicional[i]}\');';
+      sql = "insert into tradicionalSerieLink(tradicional, link) values ('tradicional-$i','${tradicional[i]}');";
       await db.execute(sql);
     }
 
     for (int i = 0; i < onTop.length; i++) {
-      sql = 'insert into onTopSerieLink(top, link) values (top-\'$i\',\'${onTop[i]}\');';
+      sql = "insert into onTopSerieLink(ontop, link) values ('top-$i','${onTop[i]}');";
       await db.execute(sql);
     }
 
     for (int i = 0; i < again.length; i++) {
-      sql = 'insert into watchAgainSerieLink(again, link) values (again-\'$i\',\'${again[i]}\');';
+      sql = "insert into watchAgainSerieLink(again, link) values ('again-$i','${again[i]}');";
       await db.execute(sql);
     }
 
     for (int i = 0; i < pages.length; i++) {
-      sql = 'insert into pagesList(page, link) values (page-\'$i\',\'${pages[i]}\');';
+      sql = "insert into pagesList(page, link) values ('page-$i','${pages[i]}');";
       await db.execute(sql);
     }
 
     for (int i = 0; i < avatars.length; i++) {
-      sql = 'insert into avatarUser(avatar, link) values (avatar-\'$i\',,\'${avatars[i].link}\');';
+      sql = "insert into avatarUser(avatar, link) values ('avatar-$i','${avatars[i].link}');";
       await db.execute(sql);
     }
   }
